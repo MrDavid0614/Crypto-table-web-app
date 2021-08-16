@@ -1,0 +1,48 @@
+$background-color: #212529;
+
+.text-muted {
+    color: gray;
+}
+
+.text-green {
+    color: lighten($color: green, $amount: 10%);
+}
+
+.text-red {
+    color: lighten($color: red, $amount: 5%);
+}
+
+.search-input {
+    width: 30%;
+    padding: 10px;
+    background-color: $background-color;
+    color: #f2f2f2;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+
+    &:focus {
+        border: 2px solid #f2f2f2;
+    }
+}
+
+.coins-table {
+    padding: 10px 0;
+    background-color: $background-color;
+    color: #f2f2f2;
+    text-align: center;
+    border-radius: 4px;
+
+    tr {
+        border-bottom: 1px solid lightslategrey;
+    }
+
+    td {
+        padding: 20px;
+    }
+
+    .coin-logo {
+        width: 30px;
+    }
+}
