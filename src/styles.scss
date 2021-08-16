@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+body { 
+    margin: 0; 
+    font-family: "DM sans", sans-serif;
+    background-color: darken($color: #212529, $amount: 5%);
+}
+app-root {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
