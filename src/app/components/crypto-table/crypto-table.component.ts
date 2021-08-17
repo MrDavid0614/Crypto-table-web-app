@@ -20,9 +20,11 @@ export class CryptoTableComponent implements OnInit, OnDestroy {
   ];
   coins: Coin[] = [];
   filteredCoins: Coin[] = [];
+  isLoading: boolean = true;
 
   constructor(private cryptoService: CryptoService) { 
     this.getCoinsSubscription = this.cryptoService.getCoins().subscribe((coins)=> {
+      setTimeout(() => this.isLoading = false, 1000);
       this.coins = coins;
       this.filteredCoins = coins;
     });

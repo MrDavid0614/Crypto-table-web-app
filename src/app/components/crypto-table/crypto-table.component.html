@@ -1,6 +1,7 @@
-<input type="text" placeholder="Search coin" class="search-input" (keyup)="filterTable($event)">
+<input type="text" [hidden]="isLoading" placeholder="Search coin" class="search-input" (keyup)="filterTable($event)">
 
-<table class="coins-table">
+<div *ngIf="isLoading" class="loader"></div>
+<table [hidden]="isLoading" class="coins-table">
     <thead>
         <th *ngFor="let column of columns">{{ column }}</th>
     </thead>
