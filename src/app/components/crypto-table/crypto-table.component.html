@@ -1,20 +1,26 @@
 <input type="text" [hidden]="isLoading" placeholder="Search coin" class="search-input" (keyup)="filterTable($event)">
 
 <div *ngIf="isLoading" class="loader"></div>
-<table [hidden]="isLoading" class="coins-table">
-    <thead>
-        <th *ngFor="let column of columns">{{ column }}</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let coin of filteredCoins; let i = index">
-            <td>{{i + 1}}</td>
-            <td><img [src]="coin.image" alt="{{ coin.name }} logo" class="coin-logo"></td>
-            <td>{{ coin.name }} <span class="text-muted">({{ coin.symbol | uppercase}})</span> </td>
-            <td>{{ coin.current_price | currency }}</td>
-            <td [ngClass]="coin.price_change_percentage_24h > 0 ? 'text-green' : 'text-red'">
-                {{ coin.price_change_percentage_24h.toFixed(1) }}%
-            </td>
-            <td>{{ coin.total_volume | currency }}</td>
-        </tr>
-    </tbody>
-</table>
+<div [hidden]="isLoading">
+    <table class="coins-table" *ngIf="filteredCoins.length > 0; else noCurrency">
+        <thead>
+            <th *ngFor="let column of columns">{{ column }}</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let coin of filteredCoins; let i = index">
+                <td>{{i + 1}}</td>
+                <td><img [src]="coin.image" alt="{{ coin.name }} logo" class="coin-logo"></td>
+                <td>{{ coin.name }} <span class="text-muted">({{ coin.symbol | uppercase}})</span> </td>
+                <td>{{ coin.current_price | currency }}</td>
+                <td [ngClass]="coin.price_change_percentage_24h > 0 ? 'text-green' : 'text-red'">
+                    {{ coin.price_change_percentage_24h.toFixed(1) }}%
+                </td>
+                <td>{{ coin.total_volume | currency }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <ng-template #noCurrency>
+        <h2>No currency found</h2>
+    </ng-template>
+</div>
